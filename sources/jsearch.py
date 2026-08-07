@@ -1,3 +1,4 @@
+from __future__ import annotations
 """JSearch via RapidAPI — aggregates jobs from LinkedIn, Indeed, Glassdoor, ZipRecruiter, Google Jobs.
 Free tier: 200 requests/month (each request returns 10 jobs).
 Docs: https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch

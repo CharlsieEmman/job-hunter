@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Orchestrates fetching from all sources, scoring, dedup, and storage.
 Two tracks: job boards (existing) + company ATS crawling (new)."""
 

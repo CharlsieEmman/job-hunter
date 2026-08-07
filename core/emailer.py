@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Email digest sender — composes and sends the daily job digest.
 
 Candidate name, greeting, and the role word in the body copy come from the

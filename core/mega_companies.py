@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Massive curated company list — Indian tech + MNCs with India offices + Global remote-friendly.
 Every company here has an engineering/software team and has been around 5+ years.
 Organized by category for easy management."""

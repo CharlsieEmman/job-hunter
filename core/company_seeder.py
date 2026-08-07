@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Curated seed list of reputable companies organized by ATS platform.
 All companies here use public ATS APIs — no auth needed."""
 

@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Bulk company discovery from multiple public sources.
 Discovers 500+ companies and auto-detects their ATS platform."""
 

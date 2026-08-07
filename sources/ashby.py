@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Ashby ATS — free public API, no auth needed.
 API: GET https://api.ashbyhq.com/posting-api/job-board/{slug}
 """

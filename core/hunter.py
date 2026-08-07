@@ -1,3 +1,4 @@
+from __future__ import annotations
 """LinkedIn search URL builder + DM generator.
 
 All candidate-specific text (name, bio, achievements) lives in the active

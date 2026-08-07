@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Arbeitnow — fully free, no API key needed.
 Docs: https://arbeitnow.com/api
 """

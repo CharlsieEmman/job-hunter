@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Remotive.com — fully free, no API key needed.
 Docs: https://remotive.com/api/remote-jobs (public API)
 """

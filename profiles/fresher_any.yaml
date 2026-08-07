@@ -177,7 +177,7 @@ outreach:
     - { title: "University Recruiting", label: "University Recruiting", category: "hr" }
   bio_short: "a fresh graduate with hands-on projects in {stack}"
   achievements:
-    - "IT graduate with strong fundamentals in data structures, algorithms, and OOP."
+    - "IT graduate with strong fundamentals in software development, data analysis, and network technology."
     - "Graduated Summa Cum Laude from De La Salle University - Dasmarinas."
     - "Placed in the Top 9 of the Shopee TR[AI]LBLAZE Hackathon."
   dm_short_template: "{greeting}, I saw {company} is hiring for {title}. I'm {bio_short}. Would love to connect and learn more about the role."

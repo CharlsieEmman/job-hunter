@@ -1,3 +1,4 @@
+from __future__ import annotations
 import uvicorn
 from fastapi import FastAPI, Query, Request, HTTPException
 from fastapi.staticfiles import StaticFiles

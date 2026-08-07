@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Lever ATS — free public API, no auth needed.
 API: GET https://api.lever.co/v0/postings/{slug}?mode=json
 """

@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Greenhouse ATS — free public API, no auth needed.
 API: GET https://boards-api.greenhouse.io/v1/boards/{slug}/jobs?content=true
 """

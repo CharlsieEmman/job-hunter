@@ -1,3 +1,4 @@
+from __future__ import annotations
 import sqlite3
 from typing import Optional
 from config.settings import DB_PATH

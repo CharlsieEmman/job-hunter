@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Rule-based relevance scorer. No API key needed.
 Scores jobs 0-100 based on title, description, and tech stack match.
 Also detects whether a job is India-remote-friendly.

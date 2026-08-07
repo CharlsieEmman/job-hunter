@@ -1,3 +1,4 @@
+from __future__ import annotations
 """RemoteOK — fully free, no API key needed.
 Endpoint: https://remoteok.com/api
 """

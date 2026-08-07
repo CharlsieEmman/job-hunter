@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Google Sheets integration — push jobs to a sheet for n8n / outreach workflows."""
 
 import gspread

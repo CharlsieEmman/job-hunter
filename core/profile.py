@@ -56,8 +56,8 @@ def default_config() -> dict:
             },
         },
         "location": {
-            "india_positive": [],
-            "india_negative": [],
+            "philippines_positive": [],
+            "philippines_negative": [],
             "timezone_compatible": [],
             "timezone_incompatible": [],
         },
@@ -423,14 +423,14 @@ def seed_search_queries_from_profile(pid: int, replace: bool = False) -> int:
 
     added = 0
     for q in queries:
-        key = (str(q.get("query", "")).strip().lower(), q.get("country", "IN"))
+        key = (str(q.get("query", "")).strip().lower(), q.get("country", "PH"))
         if not key[0]:
             continue
         if key in existing_keys:
             continue
         add_search_query(
             query=q.get("query", ""),
-            country=q.get("country", "IN"),
+            country=q.get("country", "PH"),
             date_posted=q.get("date_posted", "3days"),
             remote_jobs_only=bool(q.get("remote_jobs_only", False)),
         )
@@ -451,16 +451,16 @@ def _legacy_profile_from_settings() -> dict:
     cfg["search"]["title_keywords_negative"] = list(getattr(s, "TITLE_KEYWORDS_NEGATIVE", []))
     cfg["search"]["relevant_tech"] = list(getattr(s, "RELEVANT_TECH", []))
     cfg["search"]["jsearch_default_queries"] = [
-        {"query": "python django backend developer", "country": "IN", "date_posted": "3days", "remote_jobs_only": False},
-        {"query": "python backend engineer", "country": "IN", "date_posted": "3days", "remote_jobs_only": False},
-        {"query": "django developer", "country": "IN", "date_posted": "3days", "remote_jobs_only": False},
-        {"query": "fastapi developer", "country": "IN", "date_posted": "week", "remote_jobs_only": False},
-        {"query": "python backend remote", "country": "IN", "date_posted": "week", "remote_jobs_only": True},
-        {"query": "backend engineer python", "country": "US", "date_posted": "week", "remote_jobs_only": True},
+        {"query": "python django backend developer", "country": "PH", "date_posted": "3days", "remote_jobs_only": False},
+        {"query": "python backend engineer", "country": "PH", "date_posted": "3days", "remote_jobs_only": False},
+        {"query": "django developer", "country": "PH", "date_posted": "3days", "remote_jobs_only": False},
+        {"query": "fastapi developer", "country": "PH", "date_posted": "week", "remote_jobs_only": False},
+        {"query": "python backend remote", "country": "PH", "date_posted": "week", "remote_jobs_only": True},
+        {"query": "backend engineer python", "country": "PH", "date_posted": "week", "remote_jobs_only": True},
     ]
 
-    cfg["location"]["india_positive"] = list(getattr(s, "LOCATION_INDIA_POSITIVE", []))
-    cfg["location"]["india_negative"] = list(getattr(s, "LOCATION_INDIA_NEGATIVE", []))
+    cfg["location"]["philippines_positive"] = list(getattr(s, "LOCATION_PHILIPPINES_POSITIVE", []))
+    cfg["location"]["philippines_negative"] = list(getattr(s, "LOCATION_PHILIPPINES_NEGATIVE", []))
     cfg["location"]["timezone_compatible"] = list(getattr(s, "TIMEZONE_COMPATIBLE", []))
     cfg["location"]["timezone_incompatible"] = list(getattr(s, "TIMEZONE_INCOMPATIBLE", []))
 
@@ -581,7 +581,7 @@ def get_active_profile_queries() -> list[dict]:
         out.append({
             "id": idx,
             "query": q.get("query", ""),
-            "country": q.get("country", "IN"),
+            "country": q.get("country", "PH"),
             "date_posted": q.get("date_posted", "3days"),
             "remote_jobs_only": bool(q.get("remote_jobs_only", False)),
             "enabled": bool(q.get("enabled", True)),
@@ -589,7 +589,7 @@ def get_active_profile_queries() -> list[dict]:
     return out
 
 
-def add_active_profile_query(query: str, country: str = "IN",
+def add_active_profile_query(query: str, country: str = "PH",
                              date_posted: str = "3days",
                              remote_jobs_only: bool = False) -> int:
     """Append a query to the active profile. Returns its new index.

@@ -1,3 +1,4 @@
+from __future__ import annotations
 """HTML career page scraper — fallback for companies without a standard ATS.
 Fetches the careers URL and extracts links that look like job postings."""
 
