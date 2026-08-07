@@ -65,11 +65,11 @@ search:
     - "a11y"
     - "storybook"
   jsearch_default_queries:
-    - { query: "frontend react developer", country: "IN", date_posted: "3days", remote_jobs_only: false }
-    - { query: "react engineer", country: "IN", date_posted: "3days", remote_jobs_only: false }
-    - { query: "typescript frontend", country: "IN", date_posted: "week", remote_jobs_only: false }
-    - { query: "nextjs developer", country: "IN", date_posted: "week", remote_jobs_only: false }
-    - { query: "frontend engineer remote", country: "IN", date_posted: "week", remote_jobs_only: true }
+    - { query: "frontend react developer", country: "PH", date_posted: "3days", remote_jobs_only: false }
+    - { query: "react engineer", country: "PH", date_posted: "3days", remote_jobs_only: false }
+    - { query: "typescript frontend", country: "PH", date_posted: "week", remote_jobs_only: false }
+    - { query: "nextjs developer", country: "PH", date_posted: "week", remote_jobs_only: false }
+    - { query: "frontend engineer remote", country: "PH", date_posted: "week", remote_jobs_only: true }
     - { query: "react developer remote", country: "US", date_posted: "week", remote_jobs_only: true }
 
 scoring:
@@ -99,8 +99,8 @@ scoring:
     - "hydration"
 
 location:
-  india_positive:
-    - "india"
+  philippine_positive:
+    - "philippines"
     - "asia"
     - "worldwide"
     - "global"
@@ -125,7 +125,7 @@ location:
     - "gurugram"
     - "remote - india"
     - "ist"
-  india_negative:
+  philippine_negative:
     - "us only"
     - "usa only"
     - "us-only"
@@ -140,7 +140,7 @@ location:
     - "americas only"
     - "north america only"
   timezone_compatible:
-    - "ist"
+    - "hkt"
     - "gmt"
     - "utc"
     - "cet"

@@ -66,12 +66,12 @@ search:
     - "postgresql"
     - "mongodb"
   jsearch_default_queries:
-    - { query: "graduate software engineer", country: "IN", date_posted: "week", remote_jobs_only: false }
-    - { query: "entry level software developer", country: "IN", date_posted: "week", remote_jobs_only: false }
-    - { query: "junior software engineer", country: "IN", date_posted: "week", remote_jobs_only: false }
-    - { query: "fresher software developer", country: "IN", date_posted: "3days", remote_jobs_only: false }
-    - { query: "software engineer trainee", country: "IN", date_posted: "week", remote_jobs_only: false }
-    - { query: "new grad software engineer", country: "IN", date_posted: "week", remote_jobs_only: true }
+    - { query: "graduate software engineer", country: "PH", date_posted: "week", remote_jobs_only: false }
+    - { query: "entry level software developer", country: "PH", date_posted: "week", remote_jobs_only: false }
+    - { query: "junior software engineer", country: "PH", date_posted: "week", remote_jobs_only: false }
+    - { query: "fresher software developer", country: "PH", date_posted: "3days", remote_jobs_only: false }
+    - { query: "software engineer trainee", country: "PH", date_posted: "week", remote_jobs_only: false }
+    - { query: "new grad software engineer", country: "PH", date_posted: "week", remote_jobs_only: true }
 
 scoring:
   experience_target: "fresher"
@@ -102,8 +102,8 @@ scoring:
     - "entry level"
 
 location:
-  india_positive:
-    - "india"
+  philippine_positive:
+    - "philippines"
     - "asia"
     - "worldwide"
     - "global"
@@ -135,7 +135,7 @@ location:
     - "remote - india"
     - "ist"
     - "indian standard time"
-  india_negative:
+  philippine_negative:
     - "us only"
     - "usa only"
     - "us-only"
@@ -153,7 +153,7 @@ location:
     - "americas only"
     - "north america only"
   timezone_compatible:
-    - "ist"
+    - "hkt"
     - "gmt"
     - "utc"
     - "cet"
@@ -183,9 +183,9 @@ outreach:
     - { title: "University Recruiting", label: "University Recruiting", category: "hr" }
   bio_short: "a fresh graduate with hands-on projects in {stack}"
   achievements:
-    - "CS graduate with strong fundamentals in data structures, algorithms, and OOP."
-    - "Built 3+ full-stack projects on GitHub — REST APIs, authentication, database design."
-    - "Contributed to 2 open-source projects; comfortable shipping PRs and reading large codebases."
+    - "IT graduate with strong fundamentals in data structures, algorithms, and OOP."
+    - "Graduated Summa Cum Laude from De La Salle University - Dasmarinas."
+    - "Placed in the Top 9 of the Shopee TR[AI]LBLAZE Hackathon."
   dm_short_template: "{greeting}, I saw {company} is hiring for {title}. I'm {bio_short}. Would love to connect and learn more about the role."
   dm_long_template: |
     {greeting},

@@ -68,12 +68,12 @@ search:
     - "kafka"
     - "elasticsearch"
   jsearch_default_queries:
-    - { query: "python django backend developer", country: "IN", date_posted: "3days", remote_jobs_only: false }
-    - { query: "python backend engineer", country: "IN", date_posted: "3days", remote_jobs_only: false }
-    - { query: "django developer", country: "IN", date_posted: "3days", remote_jobs_only: false }
-    - { query: "fastapi developer", country: "IN", date_posted: "week", remote_jobs_only: false }
-    - { query: "python backend remote", country: "IN", date_posted: "week", remote_jobs_only: true }
-    - { query: "backend engineer python", country: "US", date_posted: "week", remote_jobs_only: true }
+    - { query: "python django backend developer", country: "PH", date_posted: "3days", remote_jobs_only: false }
+    - { query: "python backend engineer", country: "PH", date_posted: "3days", remote_jobs_only: false }
+    - { query: "django developer", country: "PH", date_posted: "3days", remote_jobs_only: false }
+    - { query: "fastapi developer", country: "PH", date_posted: "week", remote_jobs_only: false }
+    - { query: "python backend remote", country: "PH", date_posted: "week", remote_jobs_only: true }
+    - { query: "backend engineer python", country: "PH", date_posted: "week", remote_jobs_only: true }
 
 scoring:
   experience_target: "mid"
@@ -97,8 +97,8 @@ scoring:
     - "endpoint"
 
 location:
-  india_positive:
-    - "india"
+  philippine_positive:
+    - "philippines"
     - "asia"
     - "worldwide"
     - "global"
@@ -131,8 +131,8 @@ location:
     - "ahmedabad"
     - "remote - india"
     - "ist"
-    - "indian standard time"
-  india_negative:
+    - "philippine standard time"
+  philippine_negative:
     - "us only"
     - "usa only"
     - "us-only"
@@ -161,7 +161,7 @@ location:
     - "na only"
     - "latam only"
   timezone_compatible:
-    - "ist"
+    - "hkt"
     - "gmt"
     - "utc"
     - "cet"
