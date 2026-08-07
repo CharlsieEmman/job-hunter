@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/static/style.css?v=5">
     <link rel="stylesheet" href="/static/profile.css?v=1">
 </head>
+
 <body>
     <div class="header">
         <div style="display:flex;align-items:center;gap:24px;">
@@ -34,7 +36,9 @@
                 <button class="btn btn-sm btn-outline" onclick="createBlankProfile()">+ New</button>
             </div>
             <div id="profile-list" class="profile-list">
-                <div class="loading"><div class="spinner"></div></div>
+                <div class="loading">
+                    <div class="spinner"></div>
+                </div>
             </div>
 
             <div class="sidebar-head" style="margin-top:24px;">
@@ -50,7 +54,8 @@
                     <input type="text" id="profile-name" class="editor-name" placeholder="Profile name">
                     <span id="profile-source-chip" class="source-chip"></span>
                 </div>
-                <input type="text" id="profile-description" class="editor-description" placeholder="One-line description of this profile">
+                <input type="text" id="profile-description" class="editor-description"
+                    placeholder="One-line description of this profile">
             </div>
 
             <nav class="tab-bar">
@@ -64,7 +69,8 @@
             <div class="tab-pane active" data-tab="search">
                 <div class="field">
                     <label>Default Search Terms</label>
-                    <div class="help">Keywords you search for (displayed in UI only; not used by Remotive/RemoteOK which return all software jobs).</div>
+                    <div class="help">Keywords you search for (displayed in UI only; not used by Remotive/RemoteOK which
+                        return all software jobs).</div>
                     <div class="tag-editor" data-path="search.default_terms"></div>
                 </div>
                 <div class="field">
@@ -79,14 +85,17 @@
                 </div>
                 <div class="field">
                     <label>Relevant Tech</label>
-                    <div class="help">All tech words we scan for in job descriptions. Matched ones appear as tags on each job.</div>
+                    <div class="help">All tech words we scan for in job descriptions. Matched ones appear as tags on
+                        each job.</div>
                     <div class="tag-editor" data-path="search.relevant_tech"></div>
                 </div>
                 <div class="field">
                     <label>JSearch Default Queries</label>
-                    <div class="help">Queries that get seeded into the Search Queries table when this profile is imported/activated with "Seed search queries" checked.</div>
+                    <div class="help">Queries that get seeded into the Search Queries table when this profile is
+                        imported/activated with "Seed search queries" checked.</div>
                     <div id="jsearch-queries-editor" class="query-rows"></div>
-                    <button class="btn btn-sm btn-outline" onclick="addJsearchRow()" style="margin-top:8px;">+ Add query</button>
+                    <button class="btn btn-sm btn-outline" onclick="addJsearchRow()" style="margin-top:8px;">+ Add
+                        query</button>
                 </div>
             </div>
 
@@ -94,7 +103,8 @@
             <div class="tab-pane" data-tab="scoring">
                 <div class="field">
                     <label>Experience Target</label>
-                    <div class="help">Tells the scorer which experience level to reward. Replaces the hardcoded junior-penalty.</div>
+                    <div class="help">Tells the scorer which experience level to reward. Replaces the hardcoded
+                        junior-penalty.</div>
                     <div class="radio-row">
                         <label><input type="radio" name="exp-target" value="fresher"> Fresher</label>
                         <label><input type="radio" name="exp-target" value="junior"> Junior</label>
@@ -117,10 +127,14 @@
                 <div class="field">
                     <label>Scoring Weights (should sum to 100)</label>
                     <div class="weights-grid">
-                        <div><span class="weight-label">Title</span><input type="number" id="w-title" min="0" class="num-input"></div>
-                        <div><span class="weight-label">Tech</span><input type="number" id="w-tech" min="0" class="num-input"></div>
-                        <div><span class="weight-label">Experience</span><input type="number" id="w-experience" min="0" class="num-input"></div>
-                        <div><span class="weight-label">Signals</span><input type="number" id="w-signal" min="0" class="num-input"></div>
+                        <div><span class="weight-label">Title</span><input type="number" id="w-title" min="0"
+                                class="num-input"></div>
+                        <div><span class="weight-label">Tech</span><input type="number" id="w-tech" min="0"
+                                class="num-input"></div>
+                        <div><span class="weight-label">Experience</span><input type="number" id="w-experience" min="0"
+                                class="num-input"></div>
+                        <div><span class="weight-label">Signals</span><input type="number" id="w-signal" min="0"
+                                class="num-input"></div>
                     </div>
                     <div id="weights-total" class="help" style="margin-top:6px;">Total: 100</div>
                 </div>
@@ -131,7 +145,8 @@
                 </div>
                 <div class="field">
                     <label>Domain Signals</label>
-                    <div class="help">Keywords in the job description that indicate it's the kind of role you want (e.g. "api" for backend, "component" for frontend, "learn" for fresher).</div>
+                    <div class="help">Keywords in the job description that indicate it's the kind of role you want (e.g.
+                        "api" for backend, "component" for frontend, "learn" for fresher).</div>
                     <div class="tag-editor" data-path="scoring.backend_signals"></div>
                 </div>
             </div>
@@ -139,14 +154,14 @@
             <!-- Location tab -->
             <div class="tab-pane" data-tab="location">
                 <div class="field">
-                    <label>India-Positive Keywords</label>
-                    <div class="help">Presence of these marks a job as India-friendly.</div>
-                    <div class="tag-editor" data-path="location.india_positive"></div>
+                    <label>PH-Positive Keywords</label>
+                    <div class="help">Presence of these marks a job as PH-friendly.</div>
+                    <div class="tag-editor" data-path="location.philippines_positive"></div>
                 </div>
-                <div class="field">
-                    <label>India-Negative Keywords</label>
-                    <div class="help">Presence of these <strong>excludes</strong> the job from India.</div>
-                    <div class="tag-editor" data-path="location.india_negative"></div>
+                <div class="form-group">
+                    <label>PH-Negative Keywords</label>
+                    <div class="help">Presence of these <strong>excludes</strong> the job from PH.</div>
+                    <div class="tag-editor" data-path="location.philippines_negative"></div>
                 </div>
                 <div class="field">
                     <label>Timezone-Compatible</label>
@@ -178,12 +193,17 @@
                 <div class="field-row">
                     <div class="field">
                         <label>Sender Email (From address)</label>
-                        <div class="help">Fixed to <code>SENDER_EMAIL</code> in <code>.env</code> — it has to match <code>SENDER_APP_PASSWORD</code>. Change it there, not here.</div>
-                        <input type="email" id="sender-email" class="text-input" readonly disabled placeholder="not set in .env">
+                        <div class="help">Fixed to <code>SENDER_EMAIL</code> in <code>.env</code> — it has to match
+                            <code>SENDER_APP_PASSWORD</code>. Change it there, not here.
+                        </div>
+                        <input type="email" id="sender-email" class="text-input" readonly disabled
+                            placeholder="not set in .env">
                     </div>
                     <div class="field">
                         <label>Recipient Email (your inbox)</label>
-                        <div class="help">Where the daily digest is delivered. Overrides <code>RECIPIENT_EMAIL</code> in <code>.env</code>. Leave blank to use the env value.</div>
+                        <div class="help">Where the daily digest is delivered. Overrides <code>RECIPIENT_EMAIL</code> in
+                            <code>.env</code>. Leave blank to use the env value.
+                        </div>
                         <input type="email" id="recipient-email" class="text-input" placeholder="e.g. you@gmail.com">
                     </div>
                 </div>
@@ -200,11 +220,13 @@
                     <label>LinkedIn Search Titles</label>
                     <div class="help">People titles we generate search URLs for (per outreach item).</div>
                     <div id="linkedin-titles-editor" class="query-rows"></div>
-                    <button class="btn btn-sm btn-outline" onclick="addLinkedinTitleRow()" style="margin-top:8px;">+ Add title</button>
+                    <button class="btn btn-sm btn-outline" onclick="addLinkedinTitleRow()" style="margin-top:8px;">+ Add
+                        title</button>
                 </div>
                 <div class="field">
                     <label>Bio (short)</label>
-                    <div class="help">Used in templates via the <code>{bio_short}</code> token. <code>{stack}</code> token is expanded inside this string.</div>
+                    <div class="help">Used in templates via the <code>{bio_short}</code> token. <code>{stack}</code>
+                        token is expanded inside this string.</div>
                     <input type="text" id="bio-short" class="text-input">
                 </div>
                 <div class="field">
@@ -214,7 +236,10 @@
                 </div>
                 <div class="field">
                     <label>DM — Short Template</label>
-                    <div class="help">Tokens: <code>{greeting} {company} {title} {stack} {bio_short} {candidate_name}</code>. Capped at 300 chars.</div>
+                    <div class="help">Tokens:
+                        <code>{greeting} {company} {title} {stack} {bio_short} {candidate_name}</code>. Capped at 300
+                        chars.
+                    </div>
                     <textarea id="dm-short" rows="3" class="textarea-input"></textarea>
                 </div>
                 <div class="field">
@@ -226,11 +251,13 @@
 
             <div class="editor-footer">
                 <button class="btn btn-outline" onclick="duplicateProfile()">Duplicate</button>
-                <button class="btn btn-outline" style="color:var(--red);border-color:var(--red);" onclick="deleteActiveProfile()">Delete</button>
+                <button class="btn btn-outline" style="color:var(--red);border-color:var(--red);"
+                    onclick="deleteActiveProfile()">Delete</button>
             </div>
         </section>
     </div>
 
     <script src="/static/profile.js?v=4"></script>
 </body>
+
 </html>

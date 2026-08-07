@@ -128,12 +128,12 @@ async function updateStatus(jobId, status) {
     await loadJobs();
 }
 
-// ── India badge helper ──
+// ── PH badge helper ──
 function indiaBadge(value, note) {
     const labels = {
-        yes: 'India OK',
-        maybe: 'Maybe India',
-        no: 'Not India',
+        yes: 'PH OK',
+        maybe: 'Maybe PH',
+        no: 'Not PH',
         unknown: 'Unknown',
     };
     const label = labels[value] || labels.unknown;
@@ -156,15 +156,15 @@ function renderStats() {
             <div class="value">${s.avg_score || 0}</div>
         </div>
         <div class="stat-card" style="border-color: var(--green);">
-            <div class="label">India Friendly</div>
+            <div class="label">PH Friendly</div>
             <div class="value" style="color: var(--green);">${indiaStats['yes'] || 0}</div>
         </div>
         <div class="stat-card" style="border-color: var(--yellow);">
-            <div class="label">Maybe India</div>
+            <div class="label">Maybe PH</div>
             <div class="value" style="color: var(--yellow);">${indiaStats['maybe'] || 0}</div>
         </div>
         <div class="stat-card" style="border-color: var(--red);">
-            <div class="label">Not India</div>
+            <div class="label">Not PH</div>
             <div class="value" style="color: var(--red);">${indiaStats['no'] || 0}</div>
         </div>
         ${Object.entries(s.by_source || {}).map(([src, count]) => `

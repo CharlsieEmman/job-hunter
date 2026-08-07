@@ -61,21 +61,20 @@ TITLE_KEYWORDS_NEGATIVE = [
 
 # ── Location / India Remote Filtering ──
 
-# Keywords that CONFIRM India/Asia people can apply
-LOCATION_INDIA_POSITIVE = [
-    "india", "asia", "worldwide", "global", "anywhere",
+# Keywords that CONFIRM Philippines/Asia people can apply
+LOCATION_PHILIPPINES_POSITIVE = [
+    "philippines", "asia", "worldwide", "global", "anywhere",
     "apac", "asia pacific", "asia-pacific",
     "remote - global", "remote global", "globally distributed",
     "work from anywhere", "location independent",
     "south asia", "southeast asia", "emea/apac",
-    "mumbai", "bangalore", "bengaluru", "hyderabad", "pune",
-    "delhi", "chennai", "kolkata", "noida", "gurgaon", "gurugram",
-    "new delhi", "kochi", "jaipur", "ahmedabad", "remote - india",
-    "ist", "indian standard time",
+    "manila", "cebu", "quezon city", "davao", "makati",
+    "taguig", "remote - philippines",
+    "pht", "philippine standard time",
 ]
 
-# Keywords that BLOCK India — these mean US/EU only
-LOCATION_INDIA_NEGATIVE = [
+# Keywords that BLOCK Philippines — these mean US/EU only
+LOCATION_PHILIPPINES_NEGATIVE = [
     "us only", "usa only", "us-only", "united states only",
     "must be located in the us", "must reside in the us",
     "us-based", "us based", "u.s. only", "u.s. based",

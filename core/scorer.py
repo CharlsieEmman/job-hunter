@@ -55,23 +55,37 @@ def estimate_experience_level(text: str) -> str:
 
 def check_india_friendly(location: str, description: str,
                          profile: dict = None) -> dict:
-    """Determine if a remote job is accessible from India.
+    """Determine if a remote job is accessible from the Philippines.
     Returns:
         result: 'yes' | 'no' | 'maybe'
         note: explanation string
+
+    Reads 'philippines_positive' / 'philippines_negative' from the active
+    profile's location config (falls back to the old india_positive /
+    india_negative keys for backward compatibility).
     """
     profile = profile or get_active_profile()
     loc_cfg = profile["location"]
-    india_pos = loc_cfg.get("india_positive") or []
-    india_neg = loc_cfg.get("india_negative") or []
+
+    # Support both the new PH keys and legacy India keys
+    ph_pos = (
+        loc_cfg.get("philippines_positive")
+        or loc_cfg.get("india_positive")
+        or []
+    )
+    ph_neg = (
+        loc_cfg.get("philippines_negative")
+        or loc_cfg.get("india_negative")
+        or []
+    )
     tz_good_list = loc_cfg.get("timezone_compatible") or []
     tz_bad_list = loc_cfg.get("timezone_incompatible") or []
 
     full_text = f"{location} {description}".lower()
     loc_lower = location.lower()
 
-    positive_hits = [kw for kw in india_pos if kw in full_text]
-    negative_hits = [kw for kw in india_neg if kw in full_text]
+    positive_hits = [kw for kw in ph_pos if kw in full_text]
+    negative_hits = [kw for kw in ph_neg if kw in full_text]
     tz_good = [kw for kw in tz_good_list if kw in full_text]
     tz_bad = [kw for kw in tz_bad_list if kw in full_text]
 
@@ -86,15 +100,16 @@ def check_india_friendly(location: str, description: str,
             "note": f"Timezone mismatch: {', '.join(tz_bad[:2])}",
         }
 
-    india_direct = any(kw in full_text for kw in [
-        "india", "bangalore", "bengaluru", "mumbai", "hyderabad",
-        "pune", "delhi", "chennai", "kolkata", "noida", "gurgaon",
-        "gurugram", "remote - india",
+    # Direct Philippines / APAC city mention → definite yes
+    ph_direct = any(kw in full_text for kw in [
+        "philippines", "manila", "cebu", "quezon city", "davao",
+        "makati", "taguig", "pasig", "bgc", "bonifacio",
+        "remote - philippines", "pht", "philippine standard time",
     ])
-    if india_direct:
+    if ph_direct:
         return {
             "result": "yes",
-            "note": f"India mentioned: {', '.join(positive_hits[:3])}",
+            "note": f"Philippines mentioned: {', '.join(positive_hits[:3]) or 'direct match'}",
         }
 
     global_signals = any(kw in full_text for kw in [
@@ -111,10 +126,10 @@ def check_india_friendly(location: str, description: str,
             "note": f"Global remote: {', '.join(note_parts[:3])}",
         }
 
-    if any(kw in full_text for kw in ["apac", "asia", "asia pacific", "asia-pacific"]):
+    if any(kw in full_text for kw in ["apac", "asia", "asia pacific", "asia-pacific", "southeast asia"]):
         return {
             "result": "yes",
-            "note": f"APAC region: {', '.join(positive_hits[:3])}",
+            "note": "APAC/SEA region",
         }
     if tz_good:
         return {
@@ -130,15 +145,15 @@ def check_india_friendly(location: str, description: str,
     ):
         return {
             "result": "maybe",
-            "note": "Remote — no region specified, may accept India",
+            "note": "Remote — no region specified, may accept PH applicants",
         }
 
-    non_india_regions = [
-        "united states", "usa", "us", "canada", "uk",
+    non_ph_regions = [
+        "united states", "usa", "us only", "canada", "uk",
         "united kingdom", "europe", "eu", "germany",
         "france", "australia", "spain", "netherlands",
     ]
-    if any(r in loc_lower for r in non_india_regions):
+    if any(r in loc_lower for r in non_ph_regions):
         return {
             "result": "no",
             "note": f"Location restricted to: {location}",

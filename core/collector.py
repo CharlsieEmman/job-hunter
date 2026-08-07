@@ -13,7 +13,9 @@ from core.scorer import score_job
 from core.profile import get_active_profile
 from sources.remotive import RemotiveSource
 from sources.remoteok import RemoteOKSource
-from sources.arbeitnow import ArbeitnowSource
+from sources.arbeitnow import ArbeitnowSource  # noqa: F401 — kept for manual use
+from sources.jobstreet import JobstreetSource
+from sources.indeed import IndeedPHSource
 from sources.jsearch import JSearchSource
 from sources.greenhouse import GreenhouseSource
 from sources.lever import LeverSource
@@ -35,7 +37,10 @@ def _build_job_board_sources() -> list:
     sources = [
         RemotiveSource(),
         RemoteOKSource(),
-        ArbeitnowSource(),
+        # ArbeitnowSource is excluded — it is a German/European job board
+        # and is not relevant for Philippines-based job hunting.
+        JobstreetSource(),   # ph.jobstreet.com — PH-native, no key needed
+        IndeedPHSource(),    # ph.indeed.com — HTML scraper, no key needed
     ]
     if RAPIDAPI_KEY:
         # Queries come from the active profile (single source of truth).
@@ -44,7 +49,7 @@ def _build_job_board_sources() -> list:
         queries = [
             {
                 "query": q["query"],
-                "country": q.get("country", "IN"),
+                "country": q.get("country", "PH"),
                 "date_posted": q.get("date_posted", "3days"),
                 **({"remote_jobs_only": "true"} if q.get("remote_jobs_only") else {}),
             }
@@ -95,6 +100,11 @@ def _score_and_store(jobs: list[Job], stats: dict, profile: dict = None):
 
         # Filter: drop irrelevant jobs before storing (saves DB space)
         if result["score"] < min_store:
+            stats["filtered_out"] += 1
+            continue
+
+        # Filter: drop jobs explicitly restricted to US/EU regions
+        if result["india_friendly"] == "no":
             stats["filtered_out"] += 1
             continue
 
